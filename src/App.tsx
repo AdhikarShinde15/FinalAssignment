@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { ITack } from "./Components/AddTrack/AddTrack.types"
+import Dashboard from "./Components/Dashboard/Dashboard"
+import Login from "./Components/Login/Login"
+import Manage from "./Components/Manage/Manage"
+import ManageOwner from "./Components/Manage/ManageOwner/ManageOwner"
+import ManageTrainer from "./Components/Manage/ManageTrainer/ManageTrainer"
 
-function App() {
+const App = () => {
+ const [trackState, setTrackState] = useState<ITack[]>([])
+    console.log(trackState);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+     <Routes>
+       <Route path="/" element={<Login/>}/>
+       <Route path="dashboard" 
+              element={<Dashboard 
+                        trackState={trackState} 
+                        setTrackState={setTrackState}/>}/>
+       <Route path="manage" element={<Manage/>}>
+         <Route path="trainer" element={<ManageTrainer />}/>
+         <Route path="owner" element={<ManageOwner />}/>
+       </Route>                
+     </Routes>
+    </BrowserRouter>
+  )
+
 }
 
-export default App;
+export default App
+
