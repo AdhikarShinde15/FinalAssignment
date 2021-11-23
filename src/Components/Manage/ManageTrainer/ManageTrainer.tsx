@@ -1,7 +1,9 @@
+import TrainerHeader from "../TrainerHeader/TrainerHeader"
+
 const ManageTrainer = () => {
     return (
         <div>
-            <h3>Manage Trainer</h3>
+            <TrainerHeader/>
         </div>
     )
 }

@@ -2,11 +2,12 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { ITack } from "./AddTrack.types"
 import styles from "../AddTrack/AddTrack.module.scss"
 import { nanoid } from 'nanoid'
+
 interface IAddTrackProps  {
     trackState: ITack[]
     setTrackState: React.Dispatch<React.SetStateAction<ITack[]>>
-  }
-
+}
+ 
 const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
     
     const { register, handleSubmit } = useForm<ITack>();

@@ -1,4 +1,4 @@
-import Header from "../../Header/Header"
+import Header from "../Header/Header"
 import AddTrack from "../AddTrack/AddTrack"
 import { ITack } from "../AddTrack/AddTrack.types"
 import styles from "../Dashboard/Dashboard.module.scss"
