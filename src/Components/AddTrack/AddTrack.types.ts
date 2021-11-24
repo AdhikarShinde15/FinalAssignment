@@ -4,7 +4,7 @@ export interface ITack {
     ownerName: string
     numberOfStudents: number
     trainerName: string
-    isOnline: boolean
+    location: string
     date: ""
     time: ""
 }

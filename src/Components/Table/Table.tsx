@@ -23,7 +23,8 @@ export default function BasicTable({ trackState }: ITableProps) {
             <TableCell align="right">Number of Students</TableCell>
             <TableCell align="right">Trainers Name</TableCell>
             <TableCell align="right">Location</TableCell>
-            <TableCell align="right">Date and Time</TableCell>
+            <TableCell align="right">Start Date</TableCell>
+            <TableCell align="right">Time</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,8 +39,9 @@ export default function BasicTable({ trackState }: ITableProps) {
               <TableCell align="right">{row.ownerName}</TableCell>
               <TableCell align="right">{row.numberOfStudents}</TableCell>
               <TableCell align="right">{row.trainerName}</TableCell>
-              <TableCell align="right">{row.isOnline}</TableCell>
+              <TableCell align="right">{row.location}</TableCell>
               <TableCell align="right">{row.date}</TableCell>
+              <TableCell align="right">{row.time}</TableCell>
             </TableRow>
           ))}
         </TableBody>

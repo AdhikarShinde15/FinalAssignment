@@ -11,15 +11,23 @@ export interface ITrainerDetails {
   trainerName: string
   trackName: string
 }
+export interface IOwnersDetails {
+  ownersName: string
+  id: string
+}
 
 export interface ContextData {
+  OwnersDetails: IOwnersDetails[]
   TrainerDetails: ITrainerDetails[]
   setTrainerDetails: React.Dispatch<React.SetStateAction<ITrainerDetails[]>>
+  setOwnersDetails: React.Dispatch<React.SetStateAction<IOwnersDetails[]>>
 }
 
 export const ContextDefaultValue: ContextData = {
   TrainerDetails: [],
-  setTrainerDetails: () => null
+  OwnersDetails: [],
+  setTrainerDetails: () => null,
+  setOwnersDetails: () => null
 }
 
 export const Context = createContext<ContextData>(ContextDefaultValue);
@@ -27,10 +35,17 @@ export const Context = createContext<ContextData>(ContextDefaultValue);
 const App = () => {
   const [trackState, setTrackState] = useState<ITack[]>([])
   const [TrainerDetails, setTrainerDetails] = useState<ITrainerDetails[]>([])
-  console.log(TrainerDetails);
+  const [OwnersDetails, setOwnersDetails] = useState<IOwnersDetails[]>([])
+  console.log(OwnersDetails);
+  console.log(trackState)
   
   return (
-    <Context.Provider value={{TrainerDetails, setTrainerDetails}}>
+    <Context.Provider value={{
+      TrainerDetails,
+      OwnersDetails,
+      setTrainerDetails,
+      setOwnersDetails
+      }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />

@@ -1,7 +1,9 @@
+import OwnerHeader from "../OwnerHeader/OwnerHeader"
+
 const ManageOwner = () => {
     return (
         <div>
-            <h3>Manage Owner</h3>
+            <OwnerHeader/>
         </div>
     )
     }
