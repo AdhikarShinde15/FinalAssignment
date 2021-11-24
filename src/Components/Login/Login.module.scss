@@ -1,0 +1,17 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    border: 1px solid gold;
+    margin-top: 10rem;
+    margin-left: 30rem;
+    height: 10rem;
+    width: fit-content;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
