@@ -30,11 +30,11 @@ export interface IAddTrainer {
 }
 
 const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
-    const { TrainerDetails , setTrainerDetails } = useContext(Context)
+    const { TrainerDetails, setTrainerDetails } = useContext(Context)
     const [on, setOn] = useState(false)
     const { register, handleSubmit } = useForm<IAddTrainer>()
     const onSubmit: SubmitHandler<IAddTrainer> = data => {
-        let clone = [...TrainerDetails , {...data, id: nanoid()}]
+        let clone = [...TrainerDetails, { ...data, id: nanoid() }]
         setTrainerDetails(clone)
     }
     useEffect(() => {
@@ -54,11 +54,15 @@ const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
                         Add New Trainer
                     </Typography>
                     <Typography component={'div'} id="modal-modal-description" sx={{ mt: 2 }}>
-                       <form onSubmit={handleSubmit(onSubmit)}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <label>New Trainers Name</label>
-                            <input type="text" {...register("trainerName")} /><br/>
+                            <input type="text" {...register("trainerName")} /><br />
                             <label>Select Track</label>
-                            <input type="text" {...register("trackName")} /><br/>
+                            <select {...register("trackName")} >
+                                <option value="React">React</option>
+                                <option value="Angular">Angular</option>
+                                <option value="Flutter">Flutter</option>
+                            </select>
                             <input type="submit" />
                         </form>
                     </Typography>
