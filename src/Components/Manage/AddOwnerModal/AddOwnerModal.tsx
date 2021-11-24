@@ -35,6 +35,8 @@ const AddOwnerModal = ({ open, handleOpen }: IOwnerModalProps) => {
     const onSubmit: SubmitHandler<IAddOwner> = data => {
         let clone = [...OwnersDetails , {...data, id: nanoid()}]
         setOwnersDetails(clone)
+        alert("Owner Add But I have not creaeted table yet on this page go to Home page to see it")
+        setOn(false)
     }
     useEffect(() => {
         setOn(open)

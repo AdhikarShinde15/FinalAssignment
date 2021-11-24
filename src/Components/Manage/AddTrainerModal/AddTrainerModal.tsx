@@ -36,6 +36,8 @@ const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
     const onSubmit: SubmitHandler<IAddTrainer> = data => {
         let clone = [...TrainerDetails, { ...data, id: nanoid() }]
         setTrainerDetails(clone)
+        alert("Trainer Add But I have not creaeted table yet on this page go to Home page to see it")
+        setOn(false)
     }
     useEffect(() => {
         setOn(open)
