@@ -1,4 +1,4 @@
-export interface ITack {
+export interface ITrack {
     id: string
     trackName: string
     ownerName: string
@@ -7,4 +7,8 @@ export interface ITack {
     location: string
     date: ""
     time: ""
+}
+export interface IAddTrackProps {
+    trackState: ITrack[]
+    setTrackState: React.Dispatch<React.SetStateAction<ITrack[]>>
 }

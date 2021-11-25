@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom"
 import Header from "../../Header/Header"
 import styles from "../ManageMain/Manage.module.scss"
+
 const Manage = () => {
     return (
         <div>

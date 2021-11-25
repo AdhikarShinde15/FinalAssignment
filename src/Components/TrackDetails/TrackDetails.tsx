@@ -1,9 +1,4 @@
-import { ITack } from "../AddTrack/AddTrack.types"
-
-interface ITrackDetailsProps  {
-    trackState: ITack[]
-    setTrackState: React.Dispatch<React.SetStateAction<ITack[]>>
-}
+import { ITrackDetailsProps } from "./TrackDetails.types"
 
 const TrackDetails = ({ trackState }: ITrackDetailsProps) => {
     return <div>

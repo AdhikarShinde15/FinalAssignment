@@ -1,17 +1,20 @@
 .login{
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-items: center;
-    border: 1px solid gold;
-    margin-top: 10rem;
-    margin-left: 30rem;
-    height: 10rem;
-    width: fit-content;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 1px solid red;
+    width: 30rem;
+    height: 18rem;
 }
 
 .form {
     display: flex;
+    width: 1rem;
     flex-direction: column;
-    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
 }
+

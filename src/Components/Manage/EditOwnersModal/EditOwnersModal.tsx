@@ -4,8 +4,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { Context } from "../../../App"
-import { nanoid } from "nanoid"
-import { IAddOwner, IOwnerModalProps } from "./AddOwnerModal.types"
+import { Button } from "@mui/material"
+import { IEditOwner, IOwnersModalProps } from "./EditOwnersModal.types"
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -20,12 +20,20 @@ const style = {
     p: 4,
 }
 
-const AddOwnerModal = ({ open, handleOpen }: IOwnerModalProps) => {
-    const { OwnersDetails , setOwnersDetails } = useContext(Context)
+const EditOwnerModal = ({ open, handleOpen, id }: IOwnersModalProps) => {
+    const { OwnersDetails, setOwnersDetails } = useContext(Context)
     const [on, setOn] = useState(false)
-    const { register, handleSubmit } = useForm<IAddOwner>()
-    const onSubmit: SubmitHandler<IAddOwner> = data => {
-        let clone = [...OwnersDetails , {...data, id: nanoid()}]
+    const { register, handleSubmit } = useForm<IEditOwner>()
+    const onSubmit: SubmitHandler<IEditOwner> = data => {
+        let clone = OwnersDetails.map((ele) => {
+            if(ele.id === id)
+            {
+                ele.ownersName = data.ownerName
+                return ele
+            }
+            else
+            return ele
+        })
         setOwnersDetails(clone)
         setOn(false)
     }
@@ -43,13 +51,14 @@ const AddOwnerModal = ({ open, handleOpen }: IOwnerModalProps) => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Add New Owner
+                        Edit Trainer
                     </Typography>
                     <Typography component={'div'} id="modal-modal-description" sx={{ mt: 2 }}>
-                       <form onSubmit={handleSubmit(onSubmit)}>
-                            <label>New Owners Name</label>
-                            <input type="text" {...register("ownersName")} /><br/>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <label>Edit Trainers Name</label>
+                            <input type="text" {...register("ownerName")} /><br />
                             <input type="submit" />
+                            <Button onClick={() => handleOpen}>Close</Button>
                         </form>
                     </Typography>
                 </Box>
@@ -58,5 +67,5 @@ const AddOwnerModal = ({ open, handleOpen }: IOwnerModalProps) => {
     )
 }
 
-export default AddOwnerModal
+export default EditOwnerModal
 

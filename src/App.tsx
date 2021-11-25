@@ -1,6 +1,6 @@
 import { createContext, useState } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ITack } from "./Components/AddTrack/AddTrack.types"
+import { ITrack } from "./Components/AddTrack/AddTrack.types"
 import Dashboard from "./Components/Dashboard/Dashboard"
 import Login from "./Components/Login/Login"
 import Manage from "./Components/Manage/ManageMain/Manage"
@@ -10,6 +10,7 @@ import ManageTrainer from "./Components/Manage/ManageTrainer/ManageTrainer"
 export interface ITrainerDetails {
   trainerName: string
   trackName: string
+  id: string
 }
 export interface IOwnersDetails {
   ownersName: string
@@ -33,11 +34,9 @@ export const ContextDefaultValue: ContextData = {
 export const Context = createContext<ContextData>(ContextDefaultValue);
 
 const App = () => {
-  const [trackState, setTrackState] = useState<ITack[]>([])
+  const [trackState, setTrackState] = useState<ITrack[]>([])
   const [TrainerDetails, setTrainerDetails] = useState<ITrainerDetails[]>([])
   const [OwnersDetails, setOwnersDetails] = useState<IOwnersDetails[]>([])
-  console.log(OwnersDetails);
-  console.log(trackState)
   
   return (
     <Context.Provider value={{

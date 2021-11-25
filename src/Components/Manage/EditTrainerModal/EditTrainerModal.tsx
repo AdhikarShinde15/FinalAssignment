@@ -4,8 +4,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { Context } from "../../../App"
-import { nanoid } from "nanoid"
-import { IAddTrainer, ITrainerModalProps } from "./AddTrainerModal.types"
+import { Button } from "@mui/material"
+import { IEditTrainer, ITrainerModalProps } from "./EditTrainerModal.types"
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -20,12 +20,21 @@ const style = {
     p: 4,
 }
 
-const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
+const EditTrainerModal = ({ open, handleOpen, id }: ITrainerModalProps) => {
     const { TrainerDetails, setTrainerDetails } = useContext(Context)
     const [on, setOn] = useState(false)
-    const { register, handleSubmit } = useForm<IAddTrainer>()
-    const onSubmit: SubmitHandler<IAddTrainer> = data => {
-        let clone = [...TrainerDetails, { ...data, id: nanoid() }]
+    const { register, handleSubmit } = useForm<IEditTrainer>()
+    const onSubmit: SubmitHandler<IEditTrainer> = data => {
+        let clone = TrainerDetails.map((ele) => {
+            if(ele.id === id)
+            {
+                ele.trackName = data.trackName
+                ele.trainerName = data.trainerName
+                return ele
+            }
+            else
+            return ele
+        })
         setTrainerDetails(clone)
         setOn(false)
     }
@@ -43,11 +52,11 @@ const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Add New Trainer
+                        Edit Trainer
                     </Typography>
                     <Typography component={'div'} id="modal-modal-description" sx={{ mt: 2 }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <label>New Trainers Name</label>
+                            <label>Edit Trainers Name</label>
                             <input type="text" {...register("trainerName")} /><br />
                             <label>Select Track</label>
                             <select {...register("trackName")} >
@@ -56,6 +65,7 @@ const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
                                 <option value="Flutter">Flutter</option>
                             </select>
                             <input type="submit" />
+                            <Button onClick={() => handleOpen}>Close</Button>
                         </form>
                     </Typography>
                 </Box>
@@ -64,4 +74,5 @@ const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
     )
 }
 
-export default AddTrainerModal
+export default EditTrainerModal
+

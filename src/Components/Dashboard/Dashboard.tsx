@@ -1,13 +1,10 @@
 import Header from "../Header/Header"
 import AddTrack from "../AddTrack/AddTrack"
-import { ITack } from "../AddTrack/AddTrack.types"
 import styles from "../Dashboard/Dashboard.module.scss"
 import BasicTable from "../Table/Table"
-
-interface IDashboardProps {
-    trackState: ITack[]
-    setTrackState: React.Dispatch<React.SetStateAction<ITack[]>>
-}
+import { IDashboardProps } from "./Dashboard.types"
+import { useContext } from "react"
+import { Context } from "../../App"
 
 const Dashboard = ({ trackState, setTrackState }: IDashboardProps) => {
     return (
