@@ -4,7 +4,7 @@ import styles from "../AddTrack/AddTrack.module.scss"
 import { nanoid } from 'nanoid'
 import { useContext } from "react"
 import { Context } from "../../Contexts/Context"
-import { Button, Select, TextField } from "@mui/material"
+import { Button, MenuItem, Select, TextField } from "@mui/material"
 
 
 const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
@@ -22,14 +22,14 @@ const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
             <label>Owner Name</label>
             <Select variant="standard" {...register("ownerName", { required: "OwnerName Required" })} >
                 {OwnersDetails && OwnersDetails.map(value => (
-                    <option key={value.ownersName} value={value.ownersName}>
+                    <MenuItem key={value.ownersName} value={value.ownersName}>
                         {value.ownersName}
-                    </option>
+                    </MenuItem>
                 ))}
                 {
-                    OwnersDetails.length === 0 && <option value="none">
+                    OwnersDetails.length === 0 && <MenuItem value="none">
                         No Owner Added
-                    </option>
+                    </MenuItem>
                 }
             </Select>
             <label>Number of Students</label>
@@ -37,27 +37,27 @@ const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
             <label>Trainers Name</label>
             <Select variant="standard" {...register("trainerName")} >
                 {TrainerDetails && TrainerDetails.map(value => (
-                    <option key={value.trainerName} value={value.trainerName}>
+                    <MenuItem key={value.trainerName} value={value.trainerName}>
                         {value.trainerName}
-                    </option>
+                    </MenuItem>
                 ))}
                 {
-                    TrainerDetails.length === 0 && <option value="none">
+                    TrainerDetails.length === 0 && <MenuItem value="none">
                         No Trainer Added
-                    </option>
+                    </MenuItem>
                 }
             </Select>
             <label>Location</label>
             <Select variant="standard" {...register("location", { required: "Location Required" })} >
-                <option value="Pune">Pune</option>
-                <option value="Bangalore">Bangalore</option>
-                <option value="Online">Online</option>
+                <MenuItem value="Pune">Pune</MenuItem>
+                <MenuItem value="Bangalore">Bangalore</MenuItem>
+                <MenuItem value="Online">Online</MenuItem>
             </Select>
             <label>Start Date</label>
             <TextField variant="standard" type="date" {...register("date", { required: "Start Date Reuired" })} />
             <label>Time</label>
             <TextField variant="standard" type="time" {...register("time", { required: "Time Reuired" })} />
-            <Button className={styles.btn} variant="contained" type="submit">Add Track</Button>
+            <div className={styles.btn}><Button variant="contained" type="submit">Add Track</Button></div>
         </form>
 
     )

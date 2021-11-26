@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal'
 import { Context } from "../../../Contexts/Context"
 import { nanoid } from "nanoid"
 import { IAddTrainer, ITrainerModalProps } from "./AddTrainerModal.types"
+import { Button, MenuItem, Select, TextField } from "@mui/material"
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -48,14 +49,14 @@ const AddTrainerModal = ({ open, handleOpen }: ITrainerModalProps) => {
                     <Typography component={'div'} id="modal-modal-description" sx={{ mt: 2 }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <label>New Trainers Name</label>
-                            <input type="text" {...register("trainerName")} /><br />
+                            <TextField variant="standard" type="text" {...register("trainerName")} /><br/><br/>
                             <label>Select Track</label>
-                            <select {...register("trackName")} >
-                                <option value="React">React</option>
-                                <option value="Angular">Angular</option>
-                                <option value="Flutter">Flutter</option>
-                            </select>
-                            <input type="submit" />
+                            <Select fullWidth variant="standard" {...register("trackName")} >
+                                <MenuItem value="React">React</MenuItem>
+                                <MenuItem value="Angular">Angular</MenuItem>
+                                <MenuItem value="Flutter">Flutter</MenuItem>
+                            </Select><br/><br/>
+                            <Button variant="contained" type="submit">Add Trainner</Button>
                         </form>
                     </Typography>
                 </Box>

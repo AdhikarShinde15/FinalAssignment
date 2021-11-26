@@ -3,10 +3,10 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
-// import { Context } from "../../../App"
 import { Context } from "../../../Contexts/Context"
 import { nanoid } from "nanoid"
 import { IAddOwner, IOwnerModalProps } from "./AddOwnerModal.types"
+import { Button, TextField } from "@mui/material"
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -49,8 +49,8 @@ const AddOwnerModal = ({ open, handleOpen }: IOwnerModalProps) => {
                     <Typography component={'div'} id="modal-modal-description" sx={{ mt: 2 }}>
                        <form onSubmit={handleSubmit(onSubmit)}>
                             <label>New Owners Name</label>
-                            <input type="text" {...register("ownersName")} /><br/>
-                            <input type="submit" />
+                            <TextField variant="standard" type="text" {...register("ownersName")} /><br/>
+                            <Button variant="contained" type="submit">Add Owner</Button>
                         </form>
                     </Typography>
                 </Box>

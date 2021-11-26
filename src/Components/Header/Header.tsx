@@ -7,8 +7,12 @@ const Header = () => {
         <div className={styles.header}>
             <Button variant="outlined"><Link className={styles.links} to="/">ETLP</Link></Button>
             <span>
-                <Button className={styles.btn} variant="outlined"><Link className={styles.links} to="/dashboard">Home</Link></Button>
-                <Button className={styles.btn} variant="outlined"><Link className={styles.links} to="/manage">Manage</Link></Button>
+                <span className={styles.btn}>
+                <Button variant="outlined"><Link className={styles.links} to="/dashboard">Home</Link></Button>
+                </span>
+                <span className={styles.btn}>
+                <Button variant="outlined"><Link className={styles.links} to="/manage">Manage</Link></Button>
+                </span>
             </span>
         </div>
     )
