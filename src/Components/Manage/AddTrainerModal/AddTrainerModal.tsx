@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
-import { Context } from "../../../App"
+import { Context } from "../../../Contexts/Context"
 import { nanoid } from "nanoid"
 import { IAddTrainer, ITrainerModalProps } from "./AddTrainerModal.types"
 

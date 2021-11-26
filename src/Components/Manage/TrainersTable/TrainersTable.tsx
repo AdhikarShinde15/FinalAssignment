@@ -7,7 +7,8 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { Context } from "../../../App"
+// import { Context } from "../../../App"
+import { Context } from '../../../Contexts/Context'
 import { useContext, useState } from 'react'
 import { Button } from '@mui/material'
 import EditTrainerModal from '../EditTrainerModal/EditTrainerModal'

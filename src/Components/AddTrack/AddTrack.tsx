@@ -3,7 +3,8 @@ import { IAddTrackProps, ITrack } from "./AddTrack.types"
 import styles from "../AddTrack/AddTrack.module.scss"
 import { nanoid } from 'nanoid'
 import { useContext } from "react"
-import { Context } from "../../App"
+import { Context } from "../../Contexts/Context"
+import { Button, Select, TextField } from "@mui/material"
 
 
 const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
@@ -17,9 +18,9 @@ const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <label>Track Name</label>
-            <input type="text" {...register("trackName", { required: "TrackName Required" })} />
+            <TextField  variant="standard" type="text" {...register("trackName", { required: "TrackName Required" })} />
             <label>Owner Name</label>
-            <select {...register("ownerName", { required: "OwnerName Required" })} >
+            <Select variant="standard" {...register("ownerName", { required: "OwnerName Required" })} >
                 {OwnersDetails && OwnersDetails.map(value => (
                     <option key={value.ownersName} value={value.ownersName}>
                         {value.ownersName}
@@ -30,11 +31,11 @@ const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
                         No Owner Added
                     </option>
                 }
-            </select>
+            </Select>
             <label>Number of Students</label>
-            <input type="number" {...register("numberOfStudents", { valueAsNumber: true, required: "Number of Students Required" })} />
+            <TextField  variant="standard" type="number" {...register("numberOfStudents", { valueAsNumber: true, required: "Number of Students Required" })} />
             <label>Trainers Name</label>
-            <select {...register("trainerName")} >
+            <Select variant="standard" {...register("trainerName")} >
                 {TrainerDetails && TrainerDetails.map(value => (
                     <option key={value.trainerName} value={value.trainerName}>
                         {value.trainerName}
@@ -45,18 +46,18 @@ const AddTrack = ({ trackState, setTrackState }: IAddTrackProps) => {
                         No Trainer Added
                     </option>
                 }
-            </select>
+            </Select>
             <label>Location</label>
-            <select {...register("location", { required: "Location Required" })} >
+            <Select variant="standard" {...register("location", { required: "Location Required" })} >
                 <option value="Pune">Pune</option>
                 <option value="Bangalore">Bangalore</option>
                 <option value="Online">Online</option>
-            </select>
+            </Select>
             <label>Start Date</label>
-            <input type="date" {...register("date", { required: "Start Date Reuired" })} />
+            <TextField variant="standard" type="date" {...register("date", { required: "Start Date Reuired" })} />
             <label>Time</label>
-            <input type="time" {...register("time", { required: "Time Reuired" })} />
-            <input type="submit" />
+            <TextField variant="standard" type="time" {...register("time", { required: "Time Reuired" })} />
+            <Button className={styles.btn} variant="contained" type="submit">Add Track</Button>
         </form>
 
     )

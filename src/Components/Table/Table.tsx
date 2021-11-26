@@ -8,7 +8,6 @@ import Paper from '@mui/material/Paper'
 import { ITableProps } from './Table.types'
 
 export default function BasicTable({ trackState }: ITableProps) {
-  const rows = [...trackState]
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -24,7 +23,7 @@ export default function BasicTable({ trackState }: ITableProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {trackState.map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
